@@ -1,0 +1,412 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'montserrat';
+}
+html,body{
+    width:100%;
+    height:100%;
+    /* perspective: 800px; used to create a 3D depth effect for child elements by defining how far the viewer's eye is from the scene  ....apply this where needed applying here will affect web page behaviour */
+}
+body h1,h2,h3,h4,p{
+    color:#fff;
+}
+@font-face {
+    font-family: 'montserrat';          
+    src: url('./fonts/montserrat.ttf') format('truetype');
+}
+
+
+#cursor{
+    height:15px;
+    width:15px;
+    background-color: #9aca21;
+    border-radius: 50%;
+    z-index: 999;
+    position: fixed;
+    pointer-events: none;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+#cursor-blur{
+    height:300px;
+    width:300px;
+    background-color: #9fd11f39;
+    border-radius: 50%;
+    z-index: 9;
+    position: fixed;
+    filter:blur(50px);
+    /* transition: all ease 0.2s; */
+
+}
+#nav{
+    height:140px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    gap:50px;
+    justify-content: flex-start;  
+    padding: 0px 120px;
+    position: fixed;
+    z-index: 99;
+}
+
+#nav img{
+    height:75px;
+
+}
+#nav h4{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-top: 27px;
+    margin-top: -20px;      /*for moving h4 little top bcoz keeping it center of nav doesnt look good*/
+    transition: all ease 0.3s; /*for color change when cursor hover*/
+}
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+
+}
+#main{
+  position: relative;
+  background-color:rgba(0, 0, 0, 0.701)
+}
+#page1{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10; /*just the layer after cursor-blur*/ 
+}
+#page1 h1{
+    font-size: 120px;
+    text-transform: uppercase;
+    font-weight: 900;
+    position: relative;
+}
+#page1 h1::before{      /*pseudo elements*/
+    position:absolute;
+    content: "EAT.DRINK.PLAY";
+    color:black;
+    top: -4px;
+    left: -4px;
+    z-index: -1;
+    -webkit-text-stroke: 2px #99BA47;
+}
+#page1 h2{
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 750;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#page1 p{
+    font-size: 20px;
+    font-weight: 500;
+    width:50%;
+}
+#page2{
+    width:100%;
+    min-height:100vh;
+    z-index: 10;
+}
+#scroller{
+    /* background-color: red; */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 10;
+}
+#scroller::-webkit-scrollbar{
+    display: none;
+}
+#scroller_in{
+    display:inline-block;
+    white-space: nowrap;
+    animation-name: scroll;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#scroller h2{
+    display: inline-block;
+    font-size: 120px;
+    font-weight: 970;
+    margin-right: 10px;
+    transition: all ease 0.9s;
+    font-family:sans-serif;
+    color:transparent;
+    -webkit-text-stroke: 1px #fff;
+    margin-bottom: 70px;
+}
+#scroller h2:hover{
+    color:#95bc30;
+    -webkit-text-stroke: 0px #fff;
+}
+@keyframes scroll {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+    
+}
+#about-us{
+    height:40vh;
+    width:100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 50px;
+    position:relative;
+    z-index: 10;
+}
+#about-us img{
+    height:200px;
+    width:200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+#aboutus-in{
+    width:50%;
+    text-align: center;
+}
+#aboutus-in h3{
+    font-size: 50px;
+    font-weight: 800px;
+    margin-bottom: 20px;
+}
+#aboutus-in p{
+    font-size: 20px;
+    line-height: 25px;
+}
+#cards-container{
+    height: 60vh;
+    width:100%;
+    /* background-color: red; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+
+}
+.card{
+    height:80%;
+    width:20%;
+    position: relative;
+    z-index: 10;
+    /* background-color: blue; */
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: all ease 0.5s;/* this transition is for rotate3d fxn*/
+    
+
+}
+#card1{
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-toptracer.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#card2{
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/hero-4.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#card3{
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-lessons.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+.overlay{
+    height:100%;
+    width:100%;
+    background-color: #9bd016;
+    padding: 30px;
+    padding-top: 85px;
+    opacity: 0;
+    transition: all ease 0.5s;/*this transition is for opacity*/
+}
+.overlay h3{
+    color: #000;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 900;
+    white-space: nowrap;
+    text-transform: uppercase;
+    
+}
+.overlay p{
+    color:black;
+    font-size: 18px;
+}
+.card:hover .overlay{
+    opacity:1;
+}
+.card:hover{
+    transform: rotate3d(-1,1,0,20deg); /* this is for tilt effect*/
+}
+#green-div{
+    height:40vh;
+    width:100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to left bottom,#37A932,#A7D821);
+}
+#green-div h4{
+    width:40%;
+    font-size: 22px;
+    line-height: 40px;
+    text-transform: uppercase;
+    text-align: center;
+}
+#green-div img{
+    height:100%;
+    object-fit: cover;
+    width:14%;
+}
+#page3{
+    height:100vh;
+    width:100%;
+    background-color: black;  
+    position:relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+#page3 p{
+    font-size: 30px;
+    font-weight: 900px;
+    width:65%;
+    line-height: 60px;
+    text-align: center;
+    
+}
+#page3 img{
+    height:40px;
+    position:absolute;
+}
+#page3 #colon1{
+    left:15%;
+    top:25%;
+}
+#page3 #colon2{
+    bottom:23%;
+    right:15%;
+}
+#page4 {
+    height:50vh;
+    width:100%;
+    /* background-color: red; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+}
+.elem{
+    height:45%;
+    width: 27%;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+
+}
+.elem h2{
+    height:100%;
+    width:100%;
+    background-color: #A7D821;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    transition: all ease 0.5s;
+    color: #000;
+    font-weight: 800;
+    position:absolute;
+    z-index: 20;
+}
+.elem img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all ease 0.5s;
+    scale: 1.1;
+}
+.elem:hover h2{
+    color: #fff;
+    background-color:transparent;
+}
+.elem:hover img{
+   scale:1;
+}
+#page4 h1{
+    font-size: 75px;
+    position: absolute;
+    top: 9%;
+    color:#000;
+    -webkit-text-stroke: 2px #fff;
+    font-family: Verdana;
+    font-weight: 900;
+}
+#footer{
+    height:40vh;
+    width:100%;
+    background:linear-gradient(to left bottom, #37A932 0%,#A7D821 80%);
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    position:relative;
+    padding: 40px 100px;
+    gap:150px;
+  
+
+}
+#dev{
+    height:80%;
+    width:20%;
+    /* padding-top: 40px; */
+    /* background-color: #fff; */
+    /* text-align: center; */
+    
+
+}
+#dev h3{
+    color:#000;
+    font-size: 30px;
+    line-height: 40px;
+    font-weight:900;
+    white-space: nowrap;
+}
+#dev p{
+    color:#000;
+    font-size: 20px;
+    font-weight: 900px;
+  
+}
+#footer img{
+    object-fit: cover;
+    height:100%;
+    position:absolute;
+    z-index: 0;
+}
+#footer img{
+    height:30%;
+    position:absolute;
+    z-index: 10;
+}
+#footer #f1{
+    position:absolute; 
+    width:20%;
+    left:0;
+    height: 100%;
+    z-index: 9;
+}
+
